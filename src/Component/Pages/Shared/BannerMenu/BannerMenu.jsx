@@ -3,7 +3,7 @@ import img from '../../../../assets/home/featured.jpg';
 import './BannerMenu.css';
 const BannerMenu = () => {
     return (
-        <div className="hero min-h-screen" style={{ backgroundImage: `url(${img}` }}>
+        <div className="hero min-h-screen" style={{ backgroundImage: `url(${img}`,backgroundAttachment:"fixed" }}>
   <div className="hero-overlay"></div>
   <div className="hero-content  text-neutral-content">
   <div className='text-center py-3 border-y-4 my-10 md:w-1/4 mx-auto w-11/12'>

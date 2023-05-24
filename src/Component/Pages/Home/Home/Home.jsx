@@ -5,6 +5,7 @@ import FromMenu from '../../Shared/FromMenu/FromMenu';
 import Bisto2 from '../../Shared/Bisto2/Bisto2';
 import Card from '../../Shared/Card/Card';
 import BannerMenu from '../../Shared/BannerMenu/BannerMenu';
+import HomeSlider2 from '../../Shared/HomeSlider2/HomeSlider2';
 
 const Home = () => {
     return (
@@ -42,6 +43,13 @@ const Home = () => {
       <BannerMenu></BannerMenu>
     </div>
 
+  </div>
+
+
+  <div>
+    <div>
+      <HomeSlider2></HomeSlider2>
+    </div>
   </div>
         </div>
     );

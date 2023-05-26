@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Carditem from '../Carditem/Carditem';
+import Sectiontitle from '../Sectiontitle/Sectiontitle';
 
 const Card = () => {
     const[card,setCard]=useState([]);
@@ -12,10 +13,11 @@ const Card = () => {
     },[])
     return (
         <div>
-             <div className='text-center py-3 border-y-4 my-10 md:w-1/4 mx-auto w-11/12'>
+             {/* <div className='text-center py-3 border-y-4 my-10 md:w-1/4 mx-auto w-11/12'>
         <p className='text-yellow-400'>---Should Try---</p>
         <p className='text-3xl'>CHEF RECOMMENDS</p>
-    </div>
+    </div> */}
+    <Sectiontitle title="Should Try"subtitle="CHEF RECOMMENDS"></Sectiontitle>
         <div className='grid md:grid-cols-3 grid-cols-1 '>
             {
                 card.slice(0,False?3:card.length).map(index=><Carditem key={index._id} indexdata={index}></Carditem>)

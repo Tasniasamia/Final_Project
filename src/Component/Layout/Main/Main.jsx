@@ -1,16 +1,20 @@
 import React from 'react';
 import Footer from '../../Pages/Shared/Footer/Footer';
 import Header from '../../Pages/Shared/Header/Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 const Main = () => {
+    const loaddata=useLocation();
+    console.log(loaddata);
+    const Noloaditem=(loaddata.pathname=="/Login") || (loaddata.pathname=="/Resister");
     return (
         <div>
-            <Header></Header>
-            <div>
+          
+          {Noloaditem ||   <Header></Header>}  <div>
                 <Outlet></Outlet>
             </div>
-            <Footer></Footer>
+            {Noloaditem ||      <Footer></Footer>}
+         
         </div>
     );
 };

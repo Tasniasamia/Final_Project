@@ -13,6 +13,7 @@ import pik from '../../../../assets/Group.png'
 
 // import required modules
 import { Navigation } from "swiper";
+import Sectiontitle from "../Sectiontitle/Sectiontitle";
 
 export default function HomeSlider2() {
     const[sliderdata,setSliderdata]=useState([]);
@@ -26,10 +27,12 @@ fetch('reviews.json')
     },[])
   return (
     <>
-     <div className='text-center py-3 border-y-4 my-10 md:w-1/4 mx-auto w-11/12'>
+     {/* <div className='text-center py-3 border-y-4 my-10 md:w-1/4 mx-auto w-11/12'>
         <p className='text-yellow-400'>---Order By---</p>
         <p className='text-3xl text-dark'>From Our Menu</p>
-    </div>
+    </div> */}
+    <Sectiontitle title="Order By"subtitle="From Our Menu"></Sectiontitle>
+
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {
             sliderdata.map(index=>  <SwiperSlide key={index._id}>

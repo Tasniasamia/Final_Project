@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     const navitem=(
         <>
-        <li>Home</li>
-        <li>contact</li>
+        <Link to="/">Home</Link>
+        <Link to="/order">Order</Link>
 
-        <li>DashBoard</li>
-        <li>Our Menu</li>
-        <li>Our Shop</li>
+        <Link>DashBoard</Link>
+        <Link to="/menu"className=''>Our Menu</Link>
+        <Link>Our Shop</Link>
+        <Link to="/Login">Login</Link>
+        <Link to="/Resister">Resister</Link>
         </>
     )
     return (    

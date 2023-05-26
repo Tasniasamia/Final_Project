@@ -12,15 +12,15 @@ const Banner = () => {
         <Carousel>
         <div>
             <img src={pik} />
-            <p className="legend">Legend 1</p>
+            {/* <p className="legend">Legend 1</p> */}
         </div>
         <div>
             <img src={pik1} />
-            <p className="legend">Legend 2</p>
+            {/* <p className="legend">Legend 2</p> */}
         </div>
         <div>
             <img src={pik3}/>
-            <p className="legend">Legend 3</p>
+            {/* <p className="legend">Legend 3</p> */}
         </div>
     </Carousel></div>
     );

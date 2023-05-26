@@ -6,15 +6,22 @@ import Bisto2 from '../../Shared/Bisto2/Bisto2';
 import Card from '../../Shared/Card/Card';
 import BannerMenu from '../../Shared/BannerMenu/BannerMenu';
 import HomeSlider2 from '../../Shared/HomeSlider2/HomeSlider2';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     return (
+      
         <div className=''>
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>Bisto Boss | Home</title>
+            </Helmet>
     <Banner></Banner>
   <div className='my-40'>
-    <div className='text-center py-3 border-y-4 my-10 md:w-1/4 mx-auto w-11/12'>
-        <p className='text-yellow-400'>---From 11.00am to 10.00am---</p>
-        <p className='text-3xl'>ORDER ONLINE</p>
+    <div className='flex justify-center py-3  my-10  mx-auto w-full'>
+      <div>
+        <p className='text-yellow-400 text-center py-2'>---From 11.00am to 10.00am---</p>
+        <p className='text-3xl border-y-4  text-center py-4'>ORDER ONLINE</p></div>
     </div>
     <Swipper_Slider></Swipper_Slider>
   </div>

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider';
 const Header = () => {
+  const{data}=useContext(AuthContext);
     const navitem=(
         <>
         <Link to="/">Home</Link>
@@ -10,7 +12,7 @@ const Header = () => {
         <Link>DashBoard</Link>
         <Link to="/menu"className=''>Our Menu</Link>
         <Link>Our Shop</Link>
-        <Link to="/Login">Login</Link>
+     
         <Link to="/Resister">Resister</Link>
         </>
     )
@@ -35,8 +37,7 @@ const Header = () => {
             {navitem}
           </ul>
         </div>
-          <a className="btn ms-3">Login</a>
-        </div>
+{data?<button className='btn btn-primary'>Logout</button>:   <Link to="/Login">Login</Link>}        </div>
       </div>
     );
 };

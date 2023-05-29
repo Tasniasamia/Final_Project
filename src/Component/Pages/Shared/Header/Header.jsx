@@ -2,16 +2,25 @@ import React, { useContext } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
+import useCart from '../../../../../Hooks/useCart';
+import { BsFillCartFill } from 'react-icons/bs';
 const Header = () => {
-  const{data}=useContext(AuthContext);
+  const{data,signout}=useContext(AuthContext);
+  const[Cart]=useCart();
+  console.log(Cart);
+  console.log(data);
     const navitem=(
         <>
         <Link to="/">Home</Link>
-        <Link to="/order">Order</Link>
+        <Link to="/order/Salad">Order</Link>
 
-        <Link>DashBoard</Link>
+        <Link to="/Dashboard/mycart">DashBoard</Link>
         <Link to="/menu"className=''>Our Menu</Link>
         <Link>Our Shop</Link>
+        <Link to="/Dashboard/mycart"><button className="btn gap-2">
+        <BsFillCartFill/>
+  <div className="badge badge-secondary">{Cart?.length}</div>
+</button></Link>
      
         <Link to="/Resister">Resister</Link>
         </>
@@ -37,7 +46,7 @@ const Header = () => {
             {navitem}
           </ul>
         </div>
-{data?<button className='btn btn-primary'>Logout</button>:   <Link to="/Login">Login</Link>}        </div>
+{data?<button className='btn btn-primary'onClick={signout}>Logout</button>:<Link to="/Login">Login</Link>}        </div>
       </div>
     );
 };

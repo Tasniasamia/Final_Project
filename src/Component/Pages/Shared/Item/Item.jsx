@@ -3,7 +3,10 @@ import MenuItem from '../MenuItem/MenuItem';
 import Cover from '../Cover/Cover';
 import { Link } from 'react-router-dom';
 
+// import 'animate.css/animate.min.css';
+// import 'animate.css/animate.compat.css'
 const Item = ({Item,title,img}) => {
+   
     return (
         <div>
 
@@ -15,7 +18,7 @@ const Item = ({Item,title,img}) => {
             
         </div>
         <div className='text-center'>
-           <Link to={`/order/${title}`} > <button className="btn btn-outline border-0 border-b-2 capitalize">Order now</button></Link> </div>
+           <Link to={`/Order/${title}`} > <button className="btn btn-outline border-0 border-b-2 capitalize">Order now</button></Link> </div>
         </div>
     );
 };

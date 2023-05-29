@@ -42,7 +42,9 @@ const AuthProvider = ({ children }) => {
     //signout
     const signout=()=>{
         signOut(auth).then(() => {
-            setData('')
+           
+            setData('');
+            setLoading(false);
             
           }).catch((error) => {
            
@@ -55,7 +57,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
            
            
-                setData({...currentUser});
+                setData(currentUser);
                 console.log(currentUser);
                 setLoading(false);
           

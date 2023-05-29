@@ -35,7 +35,7 @@ const Login = () => {
    
     let navigate = useNavigate();
     let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    let from=location.state?.from?.pathname || "/";
 const handlefunction=(event)=>{
     event.preventDefault();
     const email=event.target.email.value;
@@ -46,6 +46,7 @@ const handlefunction=(event)=>{
         
         const user = userCredential.user;
         console.log(user);
+        navigate(from, { replace: true });
         Swal.fire({
             title: 'Success',
             showClass: {
@@ -58,7 +59,7 @@ const handlefunction=(event)=>{
         //   console.log(user);
         setSuccess("User has submited successfully");
         setErr('');
-        navigate(from, { replace: true });
+      
         // ...
       })
       .catch((error) => {

@@ -10,17 +10,17 @@ const Resister = () => {
     // const[success,setSuccess]=useState(null);
     // const[err,setErr]=useState(null);
     const { register, handleSubmit,formState: { errors } } = useForm();
-    const {signup}=useContext(AuthContext);
+    const {signup,signout}=useContext(AuthContext);
     const onSubmit = data => {console.log(data);
         console.log(data.email);
         console.log(data.password);
 
         signup(data.email,data.password)
         .then((userCredential) => {
-            
+             signout();
             const user = userCredential.user;
             console.log(user);
-        
+         
           
           })
           .catch((error) => {

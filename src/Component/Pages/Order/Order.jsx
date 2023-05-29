@@ -6,6 +6,7 @@ import OrderCard from '../Shared/OrderCard/OrderCard';
 import CoverBanner from '../Shared/CoverBanner/CoverBanner';
 import pik from '../../../assets/home/banner.jpg';
 import { useParams } from 'react-router-dom';
+import Item2 from '../Shared/Item2/Item2';
 const Order = () => {
     const [menu]=useMenu();
     const drinks=menu.filter(index=>index.category==="drinks");
@@ -14,8 +15,8 @@ const Order = () => {
     const salad=menu.filter(index=>index.category==="salad");
     const soup=menu.filter(index=>index.category==="soup");
    const categories=['Salad','Pizza','Soup','Dessert','Drink'];
-   const {title}=useParams();
-const indexdata=categories.indexOf(title);
+   const {category}=useParams();
+const indexdata=categories.indexOf(category);
         const [tabIndex, setTabIndex] = useState(indexdata);
 
         return (
@@ -30,34 +31,30 @@ const indexdata=categories.indexOf(title);
               <Tab>Drink</Tab>
             </TabList>
             <TabPanel>
-                <div className='grid md:grid-cols-3 grid-cols-1 gap-6'>
-{
-    salad.map(index=><OrderCard key={index._id} indexdata={index}></OrderCard>)
-}</div>
+           
+<Item2 itemall={salad}></Item2>
+
             </TabPanel>
             <TabPanel>
-            <div className='grid md:grid-cols-3 grid-cols-1 gap-6'>
-            {
-    pizza.map(index=><OrderCard key={index._id} indexdata={index}></OrderCard>)
-}</div>
+          
+<Item2 itemall={pizza}></Item2>
+
+
             </TabPanel>
             <TabPanel>
-            <div className='grid md:grid-cols-3 grid-cols-1 gap-6'>
-            {
-    soup.map(index=><OrderCard key={index._id} indexdata={index}></OrderCard>)
-}</div>
+          
+<Item2 itemall={soup}></Item2>
+
             </TabPanel>
             <TabPanel>
-            <div className='grid md:grid-cols-3 grid-cols-1 gap-6'>
-            {
-    dessert.map(index=><OrderCard key={index._id} indexdata={index}></OrderCard>)
-}</div>
+         
+
+<Item2 itemall={dessert}></Item2>
             </TabPanel>
             <TabPanel>
-            <div className='grid md:grid-cols-3 grid-cols-1 gap-6'>
-            {
-    drinks.map(index=><OrderCard key={index._id} indexdata={index}></OrderCard>)
-}   </div>
+           
+<Item2 itemall={drinks}></Item2>
+
             </TabPanel>
           </Tabs></div>
         );

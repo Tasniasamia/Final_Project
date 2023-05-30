@@ -13,6 +13,7 @@ import Resister from "../Pages/Shared/Resister/Resister";
 import Private_route from "../Pages/Shared/PrivateRoute/Privateroute";
 import Dashboard from "../Layout/DashboardLayout/Dashboard";
 import Mycart from "../Pages/Home/Mycart/Mycart";
+import All_users from "../Layout/DashboardLayout/All_Users/All_users";
 
 const router = createBrowserRouter([
   {
@@ -39,11 +40,14 @@ const router = createBrowserRouter([
     ]
   },{
     path:"Dashboard",
-    element:<Dashboard></Dashboard>,
+    element:<Private_route><Dashboard></Dashboard></Private_route>,
     children:[
       {
         path:"mycart",
         element:<Mycart></Mycart>
+      },{
+        path:"allusers",
+        element:<All_users></All_users>
       }
     ]
   }

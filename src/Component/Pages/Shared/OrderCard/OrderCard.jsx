@@ -12,6 +12,8 @@ const OrderCard = ({indexdata}) => {
 // console.log(data);
     
     const {image,price,name,recipe,_id}=indexdata;
+  
+  
     const handleclick=(indexdata)=>{
 console.log(indexdata) ;  
 if(data&&data.email){

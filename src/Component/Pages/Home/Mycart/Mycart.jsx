@@ -1,12 +1,43 @@
 import React from 'react';
 import useCart from '../../../../../Hooks/useCart';
 import { BsTrashFill } from "react-icons/bs";
+import Swal from 'sweetalert2';
 import './Mycart.css';
 const Mycart = () => {
-    const [Cart]=useCart();
+    const [Cart,refetch]=useCart();
     const totalprice=Math.round(Cart.reduce((accumulator, currentValue) => {
         return accumulator + currentValue.price;
       }, 0));
+      const deleteItem=(item)=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:6769/deletecarts/${item}`,{
+                    method:"DELETE",
+                   
+                })
+                .then(res=>res.json())
+                .then(data=>{console.log(data);
+                if(data.deletedCount>0){
+                    refetch()
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+                }})
+             
+            }
+          })
+      }
     return (
         <div className='w-full '>
             <div className='flex justify-between items-center my-2 font-semibold h-[100px]'>
@@ -50,7 +81,7 @@ const Mycart = () => {
             </td>
             <td>{item.price}</td>
             <th>
-              <button className="btn bg-red-600 text-white border-0"><BsTrashFill/></button>
+              <button className="btn bg-red-600 text-white border-0"onClick={()=>deleteItem(item._id)}><BsTrashFill/></button>
             </th>
           </tr>)
       }

@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import app from '../../../../Firebase_config';
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -17,15 +17,15 @@ const AuthProvider = ({ children }) => {
 
 
 
-    // const provider = new GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
     //sign by google
-    // const googlesign = () => {
-    //     setLoading(true);
-    //     return signInWithPopup(auth, provider);
+    const googlesign = () => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
 
 
 
-    // }
+    }
     //resister
     const signup = (email, password) => {
         setLoading(true);
@@ -59,6 +59,21 @@ const AuthProvider = ({ children }) => {
            
                 setData(currentUser);
                 console.log(currentUser);
+                if(currentUser){
+                    fetch(`http://localhost:6769/jwt`,{
+                        method:"POST",
+                        headers:{
+                            "content-type":"application/json"
+                        },
+                        body:JSON.stringify({email:currentUser.email})
+                    }).then(res=>res.json()).then(data=>{console.log(data.token);
+                    localStorage.setItem("accesstoken",data.token);
+                    
+                    })
+                }
+                else{
+                    localStorage.removeItem("accesstoken");
+                }
                 setLoading(false);
           
            
@@ -69,16 +84,16 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
     //update displayname
-    // function displayname(name, photo) {
-    //     setLoading(true);
-    //     return updateProfile(auth.currentUser, {
-    //         displayName: name, photoURL: photo
+    function displayname(name, photo) {
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
 
-    //     })
-    // }
+        })
+    }
    
     const authInfo = {
-        signup, signin,data, setData,loading,signout
+        signup, signin,data, setData,loading,signout,displayname,googlesign
     }
     return (
         <div>

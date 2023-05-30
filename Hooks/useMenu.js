@@ -10,7 +10,7 @@ const useMenu = () => {
         .then(res=>res.json())
         .then(data=>{setMenu(data);setLoad(false)})
     },[])
-    return [menu,load]
+    return [menu,load];
 };
 
 export default useMenu;

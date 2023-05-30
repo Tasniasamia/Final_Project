@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider';
+import GoogleSign from '../GoogleSign/GoogleSign';
 // import Google from './Google';
 const Login = () => {
     const {signin } = useContext(AuthContext);
@@ -106,6 +107,8 @@ const handlefunction=(event)=>{
                 <button className="btn btn-primary"disabled={False}>Login</button>
               </div>
             </form>
+            <GoogleSign/>
+
             <div className='p-5'>Do you have not a account?please <Link to="/Resister"className='me-3 text-blue-900'>Resister</Link></div>
           </div>
          

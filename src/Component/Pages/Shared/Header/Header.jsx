@@ -19,10 +19,9 @@ const Header = () => {
         <Link>Our Shop</Link>
         <Link to="/Dashboard/mycart"><button className="btn gap-2">
         <BsFillCartFill/>
-  <div className="badge badge-secondary">{Cart?.length}</div>
+  <div className="badge badge-secondary">{Cart?.length || 0}</div>
 </button></Link>
      
-        <Link to="/Resister">Resister</Link>
         </>
     )
     return (    

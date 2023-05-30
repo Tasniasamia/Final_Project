@@ -5,22 +5,53 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthProvider';
+import GoogleSign from '../GoogleSign/GoogleSign';
 // import Google from './Google';
 const Resister = () => {
     // const[success,setSuccess]=useState(null);
     // const[err,setErr]=useState(null);
-    const { register, handleSubmit,formState: { errors } } = useForm();
-    const {signup,signout}=useContext(AuthContext);
+    const navigate=useNavigate();
+    const { register,reset, handleSubmit,formState: { errors } } = useForm();
+    const {signup,signout,displayname}=useContext(AuthContext);
     const onSubmit = data => {console.log(data);
         console.log(data.email);
         console.log(data.password);
-
+        console.log(data.name);
+        console.log(data.photo);
         signup(data.email,data.password)
         .then((userCredential) => {
-             signout();
+          
             const user = userCredential.user;
             console.log(user);
+            displayname(data.name,data.photo)
+            .then(() => {
+              // Profile updated!
+              const userdata={name:data.name,email:data.email}
+              fetch('http://localhost:6769/users',{
+                method:"POST",
+                headers:{
+                  "content-type":"application/json"
+                },
+                body:JSON.stringify(userdata)
+              }).then(res.json()).then(data=>{console.log(data);})
+              // reset();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'You registration has been Successfull',
+            showConfirmButton: false,
+            timer: 1500
+          })
+              
+              // ...
+            }).catch((error) => {
+              // An error occurred
+              // ...
+            });
          
+          navigate('/');
+            // signout();
+            
           
           })
           .catch((error) => {
@@ -28,8 +59,7 @@ const Resister = () => {
             const errorMessage = error.message;
            
           });
-    
-    
+         
     
     };
     // console.log(watch("example")); 
@@ -59,6 +89,16 @@ const Resister = () => {
                 {errors.email && <span className='text-red-600'>This field is required</span>}
 
               </div>
+              {/* photo */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input type="text" placeholder="photo"name="photo" className="input input-bordered" {...register("photo", { required: true })} />
+                {errors.photo && <span className='text-red-600'>This field is required</span>}
+
+              </div>
+              {/* photo */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
@@ -76,6 +116,7 @@ const Resister = () => {
               <input type="submit"value="Sign Up" className="btn btn-primary"/>
             
             </form>
+            <GoogleSign/>
           </div>
         </div>
   

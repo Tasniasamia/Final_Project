@@ -13,9 +13,9 @@ import { FaBook,FaUsers} from 'react-icons/fa';
 import './Dashboard.css';
 import useAdmin from '../../../../Hooks/useAdmin';
 const Dashboard = () => {
-    const [isAdmin]=useAdmin();
+   const [isAdmin]=useAdmin()
     console.log(isAdmin.Admin);
-    // const admin=true;
+    const admin=true;
     return (
         <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle " />
@@ -30,7 +30,7 @@ const Dashboard = () => {
             {/* <!-- Sidebar content here --> */}
         
           {
-            isAdmin.Admin?<>
+  isAdmin.Admin?<>
             
             <li><NavLink to="/Dashboard/adminhome"><AiFillHome/>Admin Home</NavLink></li>
             <li><NavLink to="/Dashboard/additem"><ImSpoonKnife/>Add Items</NavLink></li>

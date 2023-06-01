@@ -4,15 +4,19 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Pages/Shared/AuthProvider';
 import { BsTrashFill } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
+import useAxiosSecure from '../../../../../Hooks/useAxiosSecure';
 
 const All_users = () => {
     const {data}=useContext(AuthContext);
-    const { refetch, data:userData=[] } =useQuery(['usersdata'], async () => {
-        const response = await fetch(`http://localhost:6769/usersdata`)
-            if (!response.ok) {
-              throw new Error('Network response was not ok')
-            }
-            return  response.json();
+    const [axiosSecure]=useAxiosSecure();
+    const { refetch, data:userData=[] } =useQuery(['usersdata',data?.email], async () => {
+        const response = await axiosSecure.get(`/usersdata`)
+            // if (!response.ok) {
+            //   throw new Error('Network response was not ok')
+            // }
+            console.log(response.data);
+            return  response.data;
+
       })
     
     

@@ -27,7 +27,7 @@ const [axiosSecure]=useAxiosSecure();
         //     return response.json()
         //   },
         queryFn:async () => {
-            const response = await axiosSecure(`/catscollection?email=${data?.email}` )
+            const response = await axiosSecure.get(`/catscollection?email=${data?.email}` )
             console.log(response.data);
 
             return response.data

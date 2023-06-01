@@ -2,13 +2,15 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import app from '../../../../Firebase_config';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import axios from 'axios';
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
 
-
+// const [axiosSecure]=useAxiosSecure()
 
     console.log(data);
 
@@ -60,21 +62,17 @@ const AuthProvider = ({ children }) => {
                 setData(currentUser);
                 console.log(currentUser);
                 if(currentUser){
-                    fetch(`http://localhost:6769/jwt`,{
-                        method:"POST",
-                        headers:{
-                            "content-type":"application/json"
-                        },
-                        body:JSON.stringify({email:currentUser.email})
-                    }).then(res=>res.json()).then(data=>{console.log(data.token);
-                    localStorage.setItem("accesstoken",data.token);
-                    
+                    axios.post('http://localhost:6769/jwt', {email: currentUser.email})
+                    .then(data =>{
+                        // console.log(data.data.token)
+                        localStorage.setItem('accesstoken', data.data.token)
+                        setLoading(false);
                     })
                 }
                 else{
                     localStorage.removeItem("accesstoken");
                 }
-                setLoading(false);
+           
           
            
         })

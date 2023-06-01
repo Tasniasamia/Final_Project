@@ -8,6 +8,8 @@ const useAdmin = () => {
 
     const { data:isAdmin=[]} = useQuery({
         queryKey: ['isAdmin',data?.email],
+        enabled:!!data?.email && !! token,
+
         queryFn:async () => {
             const response = await fetch(`http://localhost:6769/updateUsersall/${data?.email}`)
             

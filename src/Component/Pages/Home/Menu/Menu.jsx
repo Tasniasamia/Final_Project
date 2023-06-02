@@ -12,7 +12,7 @@ import Cover from '../../Shared/Cover/Cover';
 import { Helmet } from 'react-helmet';
 import Item from '../../Shared/Item/Item';
 const Menu = () => {
-    const [menu]=useMenu();
+    const [menu,,]=useMenu();
 
     const offer=menu.filter(index=>index.category==="offered");
     const dessert=menu.filter(index=>index.category==="dessert");

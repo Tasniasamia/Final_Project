@@ -33,8 +33,8 @@ const Dashboard = () => {
   isAdmin.Admin?<>
             
             <li><NavLink to="/Dashboard/adminhome"><AiFillHome/>Admin Home</NavLink></li>
-            <li><NavLink to="/Dashboard/additem"><ImSpoonKnife/>Add Items</NavLink></li>
-            <li><NavLink to="/Dashboard/manageusers"><GiHamburgerMenu/>Manage Users</NavLink></li>
+            <li><NavLink to="/Dashboard/add_item"><ImSpoonKnife/>Add Items</NavLink></li>
+            <li><NavLink to="/Dashboard/manageitem"><GiHamburgerMenu/>Manage Items</NavLink></li>
             <li><NavLink to="/Dashboard/managebookings" ><FaBook/>Manage Bookings</NavLink></li>
             <li><NavLink to="/Dashboard/allusers" ><FaUsers/>All Users</NavLink></li>
 

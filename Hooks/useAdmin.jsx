@@ -4,14 +4,14 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from './useAxiosSecure';
 
 const useAdmin = () => {
-    const{data}=useContext(AuthContext);
+    const{data,loading}=useContext(AuthContext);
     // const[admin,setAdmin]=useState(null);
     const token=localStorage.getItem('accesstoken');
     const [axiosSecure]=useAxiosSecure();
 
-    const { data:isAdmin=[]} = useQuery({
+    const { data:isAdmin=[], isLoading: isAdminLoading} = useQuery({
         queryKey: ['isAdmin',data?.email],
-        enabled:!!data?.email && !! token,
+        enabled:!loading,
 
         queryFn:async () => {
             const response =await axiosSecure.get(`/updateUsersall/${data?.email}`)
@@ -32,7 +32,7 @@ const useAdmin = () => {
     //    }
     // },[data])
         
-        return [isAdmin];
+        return [isAdmin,isAdminLoading];
 };
 
 export default useAdmin;

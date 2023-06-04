@@ -4,17 +4,22 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import useCart from '../../../../../Hooks/useCart';
 import { BsFillCartFill } from 'react-icons/bs';
+import useAdmin from '../../../../../Hooks/useAdmin';
 const Header = () => {
   const{data,signout}=useContext(AuthContext);
   const[Cart]=useCart();
+  const [isAdmin]=useAdmin();
   console.log(Cart);
   console.log(data);
     const navitem=(
         <>
         <Link to="/">Home</Link>
         <Link to="/order/Salad">Order</Link>
-
-        <Link to="/Dashboard/mycart">DashBoard</Link>
+{
+isAdmin.Admin?     <Link to={'/Dashboard/adminhome'}>DashBoard</Link>:
+  <Link to='/Dashboard/userhome'>DashBoard</Link>
+}
+   
         <Link to="/menu"className=''>Our Menu</Link>
         <Link>Our Shop</Link>
         <Link to="/Dashboard/mycart"><button className="btn gap-2">

@@ -45,8 +45,8 @@ const Dashboard = () => {
             </>:
             
             
-            <>    <li><NavLink to="/"><AiFillHome/>User Home</NavLink></li>
-            <li><NavLink to="/reserve"><FaCalendarAlt/>Reservations</NavLink></li>
+            <>    <li><NavLink to="/Dashboard/userhome"><AiFillHome/>User Home</NavLink></li>
+            <li><NavLink to="/Dashboard/Payment"><FaCalendarAlt/>Payment</NavLink></li>
             <li><NavLink to="/reserve"><GiWallet/>Payment History</NavLink></li>
             <li><NavLink to="/Dashboard/mycart" ><BsFillCartFill/>My Cart</NavLink></li></>
           }

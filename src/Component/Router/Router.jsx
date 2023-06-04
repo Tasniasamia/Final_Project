@@ -16,6 +16,10 @@ import Mycart from "../Pages/Home/Mycart/Mycart";
 import All_users from "../Layout/DashboardLayout/All_Users/All_users";
 import Add_item from "../Layout/DashboardLayout/Add_Item/Add_item";
 import Manage_item from "../Layout/DashboardLayout/Mange_item/Manage_item";
+import SriptPayment from "../Layout/DashboardLayout/SriptPayment/SriptPayment";
+import AdminRoute from "../Pages/Shared/AdminRoute/AdminRoute";
+import AdminHome from "../Pages/Shared/AdminHome/AdminHome";
+import UserHome from "../Pages/Shared/UserHome/UserHome";
 
 const router = createBrowserRouter([
   {
@@ -49,13 +53,22 @@ const router = createBrowserRouter([
         element:<Mycart></Mycart>
       },{
         path:"allusers",
-        element:<All_users></All_users>
+        element:<AdminRoute><All_users></All_users></AdminRoute>
       },{
         path:"add_item",
-        element:<Add_item></Add_item>
+        element:<AdminRoute><Add_item></Add_item></AdminRoute>
       },{
         path:"manageitem",
         element:<Manage_item></Manage_item>
+      },{
+        path:"Payment",
+        element:<SriptPayment></SriptPayment>
+      },{
+        path:"adminhome",
+        element:<AdminHome></AdminHome>
+      },{
+        path:"userhome",
+        element:<UserHome></UserHome>
       }
     ]
   }
